@@ -8,6 +8,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class CaculatorFunction extends Application{
+	boolean emp = true;
+	String t;
+	boolean haveDot = true;
 	public void start(Stage primaryStage){
 		Pane pane = new Pane();
 		Button btn[] = new Button[28];
@@ -18,7 +21,7 @@ public class CaculatorFunction extends Application{
 		for(int i = 0;i<28;++i){
 			btn[i]=new Button(btnIn[i]);
 		}
-		TextArea cal = new TextArea();
+		TextField cal = new TextField();
 		pane.getChildren().add(cal);
         cal.setPrefSize(280, 70);
         cal.setLayoutX(10);
@@ -102,6 +105,133 @@ public class CaculatorFunction extends Application{
         primaryStage.setTitle("U10416005's caculator");
         primaryStage.setScene(scene);
         primaryStage.show();
+		//The number buttons action
+		btn[10].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("7");
+			}
+			else{
+				cal.appendText("7");
+			}
+		});
+		btn[11].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("8");
+			}
+			else{
+				cal.appendText("8");
+			}
+		});
+		btn[12].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("9");
+			}
+			else{
+				cal.appendText("9");
+			}
+		});
+		btn[15].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("4");
+			}
+			else{
+				cal.appendText("4");
+			}
+		});
+		btn[16].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("5");
+			}
+			else{
+				cal.appendText("5");
+			}
+		});
+		btn[17].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("6");
+			}
+			else{
+				cal.appendText("6");
+			}
+		});
+		btn[20].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("1");
+			}
+			else{
+				cal.appendText("1");
+			}
+		});
+		btn[21].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("2");
+			}
+			else{
+				cal.appendText("2");
+			}
+		});
+		btn[22].setOnAction(e->{
+			if(emp==true){
+				cal.clear();
+				emp = false;
+				cal.setText("3");
+			}
+			else{
+				cal.appendText("3");
+			}
+		});
+		btn[25].setOnAction(e->{
+			if(emp==false){
+				cal.appendText("0");
+			}	
+		});
+		//"<-" button action
+		btn[5].setOnAction(e->{
+			if(cal.getText().length()==1){
+				cal.clear();
+				cal.setText("0");
+			}
+			else{
+				t = cal.getText();
+				t = t.substring(0,t.length()-1);
+				cal.setText(t);
+			}
+		});
+		//"C" button action
+		btn[7].setOnAction(e->{
+			cal.clear();
+			cal.setText("0");
+		});
+		//"."button action
+		btn[26].setOnAction(e->{
+			for(int i = 0;i<cal.getText().length();i++){
+				if(cal.getText().charAt(i)=='.'){
+					haveDot=true;
+				}
+				else{
+					haveDot=false;
+				}
+			}
+			if(haveDot==false){
+				cal.appendText(".");
+			}
+		});
 		
 	}
 	 public static void main(String[] args) {
