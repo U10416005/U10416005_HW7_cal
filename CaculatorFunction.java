@@ -10,10 +10,22 @@ import javafx.stage.Stage;
 public class CaculatorFunction extends Application{
 	public void start(Stage primaryStage){
 		Pane pane = new Pane();
-		Button btn[] = new Button[28]
+		Button btn[] = new Button[28];
 		String btnIn[] = {"MC", "MR", "MS", "M+", "M-",
             "ก๖", "CE", "C", "กำ", "กิ", "7", "8", "9", "กา",
             "%", "4", "5", "6", "กั", "1/x","1","2","3","-","=",
             "0",".","+"};
+		for(int i = 0;i<28;i++){
+			btn[i]=new Button(btnIn[i]);
+		}
+		Scene scene = new Scene(pane,300,500);
+		primaryStage.setResizable(false);
+        primaryStage.setTitle("U10416005's caculator");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+		
 	}
+	 public static void main(String[] args) {
+        launch(args);
+    }
 }
