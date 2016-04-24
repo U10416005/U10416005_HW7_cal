@@ -13,6 +13,7 @@ public class CaculatorFunction extends Application{
 	String t;
 	boolean haveDot = true;
 	int act;
+	boolean numberIn = false;
 	public void start(Stage primaryStage){
 		Pane pane = new Pane();
 		Button btn[] = new Button[28];
@@ -219,6 +220,7 @@ public class CaculatorFunction extends Application{
 		btn[7].setOnAction(e->{
 			cal.clear();
 			emp = true;
+			ans = 0;
 			cal.setText("0");
 		});
 		//"."button action
@@ -239,69 +241,147 @@ public class CaculatorFunction extends Application{
 		btn[8].setOnAction(e->{
 			cal.setText(String.valueOf(-Double.valueOf(cal.getText())));
 		});
+		//"+" "-" "*" "/" buttons action
 		btn[13].setOnAction(e->{
-			switch(act){
-				case 1:
-					ans = ans+Double.valueOf(cal.getText());
-				case 2:
-					ans = ans-Double.valueOf(cal.getText());
-				case 3:
-					ans = ans*Double.valueOf(cal.getText());
-				case 4:
-					ans = ans/Double.valueOf(cal.getText());
+			if(numberIn==true){
+				switch(act){
+					case 1:
+						ans = ans+Double.valueOf(cal.getText());
+						break;
+					case 2:
+						ans = ans-Double.valueOf(cal.getText());
+						break;
+					case 3:
+						ans = ans*Double.valueOf(cal.getText());
+						break;
+					case 4:
+						ans = ans/Double.valueOf(cal.getText());
+						break;
+				}
+				cal.setText(String.valueOf(ans));
+				cal.appendText("/");
+				emp = true;
+				act = 4;
 			}
-			cal.setText(String.valueOf(ans));
-			cal.appendText("/");
-			emp = true;
-			act = 4;
+			else{
+				ans = Double.valueOf(cal.getText());
+				cal.setText(String.valueOf(ans));
+				cal.appendText("/");
+				numberIn = true;
+				emp = true;
+				act = 4;
+			}
 		});
 		btn[18].setOnAction(e->{
-			switch(act){
-				case 1:
-					ans = ans+Double.valueOf(cal.getText());
-				case 2:
-					ans = ans-Double.valueOf(cal.getText());
-				case 3:
-					ans = ans*Double.valueOf(cal.getText());
-				case 4:
-					ans = ans/Double.valueOf(cal.getText());
+			if(numberIn==true){
+				switch(act){
+					case 1:
+						ans = ans+Double.valueOf(cal.getText());
+						break;
+					case 2:
+						ans = ans-Double.valueOf(cal.getText());
+						break;
+					case 3:
+						ans = ans*Double.valueOf(cal.getText());
+						break;
+					case 4:
+						ans = ans/Double.valueOf(cal.getText());
+						break;
+				}
+				cal.setText(String.valueOf(ans));
+				cal.appendText("*");
+				emp = true;
+				act = 3;
 			}
-			cal.setText(String.valueOf(ans));
-			cal.appendText("*");
-			emp = true;
-			act = 3;
+			else{
+				ans = Double.valueOf(cal.getText());
+				cal.setText(String.valueOf(ans));
+				cal.appendText("*");
+				numberIn = true;
+				emp = true;
+				act = 3;
+			}
 		});
 		btn[23].setOnAction(e->{
-			switch(act){
-				case 1:
-					ans = ans+Double.valueOf(cal.getText());
-				case 2:
-					ans = ans-Double.valueOf(cal.getText());
-				case 3:
-					ans = ans*Double.valueOf(cal.getText());
-				case 4:
-					ans = ans/Double.valueOf(cal.getText());
+			if(numberIn==true){
+				switch(act){
+					case 1:
+						ans = ans+Double.valueOf(cal.getText());
+						break;
+					case 2:
+						ans = ans-Double.valueOf(cal.getText());
+						break;
+					case 3:
+						ans = ans*Double.valueOf(cal.getText());
+						break;
+					case 4:
+						ans = ans/Double.valueOf(cal.getText());
+						break;
+				}
+				cal.setText(String.valueOf(ans));
+				cal.appendText("-");
+				emp = true;
+				act = 2;
 			}
-			cal.setText(String.valueOf(ans));
-			cal.appendText("-");
-			emp = true;
-			act = 2;
+			else{
+				ans = Double.valueOf(cal.getText());
+				cal.setText(String.valueOf(ans));
+				cal.appendText("-");
+				numberIn = true;
+				emp = true;
+				act = 2;
+			}
 		});
 		btn[27].setOnAction(e->{
-			switch(act){
-				case 1:
-					ans = ans+Double.valueOf(cal.getText());
-				case 2:
-					ans = ans-Double.valueOf(cal.getText());
-				case 3:
-					ans = ans*Double.valueOf(cal.getText());
-				case 4:
-					ans = ans/Double.valueOf(cal.getText());
+			if(numberIn==true){
+				switch(act){
+					case 1:
+						ans = ans+Double.valueOf(cal.getText());
+						break;
+					case 2:
+						ans = ans-Double.valueOf(cal.getText());
+						break;
+					case 3:
+						ans = ans*Double.valueOf(cal.getText());
+						break;
+					case 4:
+						ans = ans/Double.valueOf(cal.getText());
+						break;
+				}
+				cal.setText(String.valueOf(ans));
+				cal.appendText("+");
+				emp = true;
+				act = 1;
 			}
-			cal.setText(String.valueOf(ans));
-			cal.appendText("+");
-			emp = true;
-			act = 1;
+			else{
+				ans = Double.valueOf(cal.getText());
+				cal.setText(String.valueOf(ans));
+				cal.appendText("+");
+				numberIn = true;
+				emp = true;
+				act = 1;
+			}
+		});
+		btn[24].setOnAction(e->{
+			if(numberIn==true){
+				switch(act){
+					case 1:
+						ans = ans+Double.valueOf(cal.getText());
+						break;
+					case 2:
+						ans = ans-Double.valueOf(cal.getText());
+						break;
+					case 3:
+						ans = ans*Double.valueOf(cal.getText());
+						break;
+					case 4:
+						ans = ans/Double.valueOf(cal.getText());
+						break;
+				}
+				cal.setText(String.valueOf(ans));
+				numberIn = false;
+				emp = true;
+			}
 		});
 	}
 	 public static void main(String[] args) {
