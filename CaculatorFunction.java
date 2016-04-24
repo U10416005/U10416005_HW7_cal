@@ -9,8 +9,10 @@ import javafx.stage.Stage;
 
 public class CaculatorFunction extends Application{
 	boolean emp = true;
+	double ans;
 	String t;
 	boolean haveDot = true;
+	int act;
 	public void start(Stage primaryStage){
 		Pane pane = new Pane();
 		Button btn[] = new Button[28];
@@ -216,6 +218,7 @@ public class CaculatorFunction extends Application{
 		//"C" button action
 		btn[7].setOnAction(e->{
 			cal.clear();
+			emp = true;
 			cal.setText("0");
 		});
 		//"."button action
@@ -232,7 +235,74 @@ public class CaculatorFunction extends Application{
 				cal.appendText(".");
 			}
 		});
-		
+		//"+/-" button action
+		btn[8].setOnAction(e->{
+			cal.setText(String.valueOf(-Double.valueOf(cal.getText())));
+		});
+		btn[13].setOnAction(e->{
+			switch(act){
+				case 1:
+					ans = ans+Double.valueOf(cal.getText());
+				case 2:
+					ans = ans-Double.valueOf(cal.getText());
+				case 3:
+					ans = ans*Double.valueOf(cal.getText());
+				case 4:
+					ans = ans/Double.valueOf(cal.getText());
+			}
+			cal.setText(String.valueOf(ans));
+			cal.appendText("/");
+			emp = true;
+			act = 4;
+		});
+		btn[18].setOnAction(e->{
+			switch(act){
+				case 1:
+					ans = ans+Double.valueOf(cal.getText());
+				case 2:
+					ans = ans-Double.valueOf(cal.getText());
+				case 3:
+					ans = ans*Double.valueOf(cal.getText());
+				case 4:
+					ans = ans/Double.valueOf(cal.getText());
+			}
+			cal.setText(String.valueOf(ans));
+			cal.appendText("*");
+			emp = true;
+			act = 3;
+		});
+		btn[23].setOnAction(e->{
+			switch(act){
+				case 1:
+					ans = ans+Double.valueOf(cal.getText());
+				case 2:
+					ans = ans-Double.valueOf(cal.getText());
+				case 3:
+					ans = ans*Double.valueOf(cal.getText());
+				case 4:
+					ans = ans/Double.valueOf(cal.getText());
+			}
+			cal.setText(String.valueOf(ans));
+			cal.appendText("-");
+			emp = true;
+			act = 2;
+		});
+		btn[27].setOnAction(e->{
+			switch(act){
+				case 1:
+					ans = ans+Double.valueOf(cal.getText());
+				case 2:
+					ans = ans-Double.valueOf(cal.getText());
+				case 3:
+					ans = ans*Double.valueOf(cal.getText());
+				case 4:
+					ans = ans/Double.valueOf(cal.getText());
+			}
+			cal.setText(String.valueOf(ans));
+			cal.appendText("+");
+			emp = true;
+			act = 1;
+		});
 	}
 	 public static void main(String[] args) {
         launch(args);
